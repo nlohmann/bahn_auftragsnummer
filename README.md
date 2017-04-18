@@ -23,7 +23,9 @@ Dies startet einen lokalen Server auf <http://127.0.0.1:8000>.
 
 ## Nutzung
 
-Für eine sechsstellige-Auftragsnummer `TYFMQE` sieht können mit `http://127.0.0.1:8000/TYFMQE` die Reisedaten abgerufen werden. Diese sehen in etwa so aus:
+Unter <http://127.0.0.1:8000/> gibt es eine Dokumentation der API.
+
+Für eine sechsstellige-Auftragsnummer `TYFMQE` können mit `http://127.0.0.1:8000/api/itineraries/TYFMQE` die Reisedaten abgerufen werden. Diese sehen in etwa so aus:
 
 ```js
 {
