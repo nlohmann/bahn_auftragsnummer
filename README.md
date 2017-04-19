@@ -29,203 +29,176 @@ Für eine sechsstellige-Auftragsnummer `TYFMQE` können mit `http://127.0.0.1:80
 
 ```js
 {
-    "date": "25.12.2016", 
-    "name": "C0-0", 
-    "referenceNumber": "TYFMQE", 
-    "sections": [
+  "referenceNumber": "TYFMQE",
+  "travelDate": "2016-12-25",
+  "legs": [
+    {
+      "transport": "ic",
+      "name": "IC 2216",
+      "type": "JOURNEY",
+      "productCode": 1,
+      "trainId": "372846/315899/176438/36063/80",
+      "locations": [
         {
-            "icon": "ic", 
-            "locations": [
-                {
-                    "arr": "10:44", 
-                    "count": "0", 
-                    "dep": "10:46", 
-                    "disabled": "", 
-                    "evaId": "8000044", 
-                    "icon": "ic", 
-                    "infocontent": "<div class='bold pointer' onclick='setActiveStation(0, 8000044,\"10:46\",\"no\")'>Bonn Hbf</div>IC  2216 ab 10:46, Gleis 2 ", 
-                    "locType": "STATION", 
-                    "name": "Bonn Hbf", 
-                    "x": "7097136", 
-                    "y": "50732008"
-                }, 
-                {
-                    "arr": "11:05", 
-                    "count": "1", 
-                    "dep": "11:09", 
-                    "disabled": "", 
-                    "evaId": "8000207", 
-                    "icon": "ic", 
-                    "infocontent": "<div class='bold pointer' onclick='setActiveStation(0, 8000207,\"11:09\",\"yes\")'>Köln Hbf</div>IC  2216 an 11:05, Gleis 5<br />IC  2216 ab 11:09 ", 
-                    "locType": "STATION", 
-                    "name": "Köln Hbf", 
-                    "x": "6958730", 
-                    "y": "50943029"
-                }, 
-                {
-                    "arr": "11:31", 
-                    "count": "2", 
-                    "dep": "11:33", 
-                    "disabled": "", 
-                    "evaId": "8000085", 
-                    "icon": "ic", 
-                    "infocontent": "<div class='bold pointer' onclick='setActiveStation(0, 8000085,\"11:33\",\"yes\")'>Düsseldorf Hbf</div>IC  2216 an 11:31, Gleis 17<br />IC  2216 ab 11:33 ", 
-                    "locType": "STATION", 
-                    "name": "Düsseldorf Hbf", 
-                    "x": "6794317", 
-                    "y": "51219960"
-                }, 
-                {
-                    "arr": "11:44", 
-                    "count": "3", 
-                    "dep": "11:46", 
-                    "disabled": "", 
-                    "evaId": "8000086", 
-                    "icon": "ic", 
-                    "infocontent": "<div class='bold pointer' onclick='setActiveStation(0, 8000086,\"11:46\",\"yes\")'>Duisburg Hbf</div>IC  2216 an 11:44, Gleis 13<br />IC  2216 ab 11:46 ", 
-                    "locType": "STATION", 
-                    "name": "Duisburg Hbf", 
-                    "x": "6775907", 
-                    "y": "51429786"
-                }, 
-                {
-                    "arr": "11:57", 
-                    "count": "4", 
-                    "dep": "11:59", 
-                    "disabled": "", 
-                    "evaId": "8000098", 
-                    "icon": "ic", 
-                    "infocontent": "<div class='bold pointer' onclick='setActiveStation(0, 8000098,\"11:59\",\"yes\")'>Essen Hbf</div>IC  2216 an 11:57, Gleis 6<br />IC  2216 ab 11:59 ", 
-                    "locType": "STATION", 
-                    "name": "Essen Hbf", 
-                    "x": "7014795", 
-                    "y": "51451351"
-                }, 
-                {
-                    "arr": "12:21", 
-                    "count": "5", 
-                    "dep": "12:25", 
-                    "disabled": "", 
-                    "evaId": "8000080", 
-                    "icon": "ic", 
-                    "infocontent": "<div class='bold pointer' onclick='setActiveStation(0, 8000080,\"12:25\",\"yes\")'>Dortmund Hbf</div>IC  2216 an 12:21, Gleis 8<br />IC  2216 ab 12:25 ", 
-                    "locType": "STATION", 
-                    "name": "Dortmund Hbf", 
-                    "x": "7459294", 
-                    "y": "51517899"
-                }, 
-                {
-                    "arr": "12:54", 
-                    "count": "6", 
-                    "dep": "12:57", 
-                    "disabled": "", 
-                    "evaId": "8000263", 
-                    "icon": "ic", 
-                    "infocontent": "<div class='bold pointer' onclick='setActiveStation(0, 8000263,\"12:57\",\"yes\")'>Münster(Westf)Hbf</div>IC  2216 an 12:54, Gleis 12<br />IC  2216 ab 12:57 ", 
-                    "locType": "STATION", 
-                    "name": "Münster(Westf)Hbf", 
-                    "x": "7635716", 
-                    "y": "51956563"
-                }, 
-                {
-                    "arr": "13:21", 
-                    "count": "7", 
-                    "dep": "13:23", 
-                    "disabled": "", 
-                    "evaId": "8000294", 
-                    "icon": "ic", 
-                    "infocontent": "<div class='bold pointer' onclick='setActiveStation(0, 8000294,\"13:23\",\"yes\")'>Osnabrück Hbf</div>IC  2216 an 13:21, Gleis 3<br />IC  2216 ab 13:23 ", 
-                    "locType": "STATION", 
-                    "name": "Osnabrück Hbf", 
-                    "x": "8061778", 
-                    "y": "52272849"
-                }, 
-                {
-                    "arr": "14:14", 
-                    "count": "8", 
-                    "dep": "14:17", 
-                    "disabled": "", 
-                    "evaId": "8000050", 
-                    "icon": "ic", 
-                    "infocontent": "<div class='bold pointer' onclick='setActiveStation(0, 8000050,\"14:17\",\"yes\")'>Bremen Hbf</div>IC  2216 an 14:14, Gleis 9<br />IC  2216 ab 14:17 ", 
-                    "locType": "STATION", 
-                    "name": "Bremen Hbf", 
-                    "x": "8813833", 
-                    "y": "53083478"
-                }, 
-                {
-                    "arr": "15:00", 
-                    "count": "9", 
-                    "dep": "15:02", 
-                    "disabled": "", 
-                    "evaId": "8000147", 
-                    "icon": "ic", 
-                    "infocontent": "<div class='bold pointer' onclick='setActiveStation(0, 8000147,\"15:02\",\"yes\")'>Hamburg-Harburg</div>IC  2216 an 15:00, Gleis 2<br />IC  2216 ab 15:02 ", 
-                    "locType": "STATION", 
-                    "name": "Hamburg-Harburg", 
-                    "x": "9991699", 
-                    "y": "53455910"
-                }, 
-                {
-                    "arr": "15:11", 
-                    "count": "10", 
-                    "dep": "15:17", 
-                    "disabled": "", 
-                    "evaId": "8002549", 
-                    "icon": "ic", 
-                    "infocontent": "<div class='bold pointer' onclick='setActiveStation(0, 8002549,\"15:17\",\"yes\")'>Hamburg Hbf</div>IC  2216 an 15:11, Gleis 12<br />IC  2216 ab 15:17 ", 
-                    "locType": "STATION", 
-                    "name": "Hamburg Hbf", 
-                    "x": "10006909", 
-                    "y": "53552733"
-                }, 
-                {
-                    "arr": "16:12", 
-                    "count": "11", 
-                    "dep": "16:14", 
-                    "disabled": "", 
-                    "evaId": "8010324", 
-                    "icon": "ic", 
-                    "infocontent": "<div class='bold pointer' onclick='setActiveStation(0, 8010324,\"16:14\",\"yes\")'>Schwerin Hbf</div>IC  2216 an 16:12, Gleis 2<br />IC  2216 ab 16:14 ", 
-                    "locType": "STATION", 
-                    "name": "Schwerin Hbf", 
-                    "x": "11407455", 
-                    "y": "53634741"
-                }, 
-                {
-                    "arr": "16:46", 
-                    "count": "12", 
-                    "dep": "16:48", 
-                    "disabled": "", 
-                    "evaId": "8010066", 
-                    "icon": "ic", 
-                    "infocontent": "<div class='bold pointer' onclick='setActiveStation(0, 8010066,\"16:48\",\"yes\")'>Bützow</div>IC  2216 an 16:46, Gleis 2<br />IC  2216 ab 16:48 ", 
-                    "locType": "STATION", 
-                    "name": "Bützow", 
-                    "x": "11998190", 
-                    "y": "53837115"
-                }, 
-                {
-                    "arr": "17:06", 
-                    "count": "13", 
-                    "dep": "17:17", 
-                    "disabled": "", 
-                    "evaId": "8010304", 
-                    "icon": "ic", 
-                    "infocontent": "<div class='bold pointer' onclick='setActiveStation(0, 8010304,\"17:17\",\"no\")'>Rostock Hbf</div>IC  2216 an 17:06, Gleis 3 ", 
-                    "locType": "STATION", 
-                    "name": "Rostock Hbf", 
-                    "typ": "active", 
-                    "x": "12131078", 
-                    "y": "54078242"
-                }
-            ], 
-            "name": "IC  2216", 
-            "productcode": "1", 
-            "trainId": "704658/426503/474728/2478/80", 
-            "type": "JOURNEY"
+          "type": "STATION",
+          "name": "Bonn Hbf",
+          "arrival": "2016-12-25T10:44:00",
+          "departure": "2016-12-25T10:46:00",
+          "stationId": "8000044",
+          "coordinates": {
+            "latitude": 50.732008,
+            "longitude": 7.097136
+          }
+        },
+        {
+          "type": "STATION",
+          "name": "Köln Hbf",
+          "arrival": "2016-12-25T11:05:00",
+          "departure": "2016-12-25T11:09:00",
+          "stationId": "8000207",
+          "coordinates": {
+            "latitude": 50.943029,
+            "longitude": 6.95873
+          }
+        },
+        {
+          "type": "STATION",
+          "name": "Düsseldorf Hbf",
+          "arrival": "2016-12-25T11:31:00",
+          "departure": "2016-12-25T11:33:00",
+          "stationId": "8000085",
+          "coordinates": {
+            "latitude": 51.21996,
+            "longitude": 6.794317
+          }
+        },
+        {
+          "type": "STATION",
+          "name": "Duisburg Hbf",
+          "arrival": "2016-12-25T11:44:00",
+          "departure": "2016-12-25T11:46:00",
+          "stationId": "8000086",
+          "coordinates": {
+            "latitude": 51.429786,
+            "longitude": 6.775907
+          }
+        },
+        {
+          "type": "STATION",
+          "name": "Essen Hbf",
+          "arrival": "2016-12-25T11:57:00",
+          "departure": "2016-12-25T11:59:00",
+          "stationId": "8000098",
+          "coordinates": {
+            "latitude": 51.451351,
+            "longitude": 7.014795
+          }
+        },
+        {
+          "type": "STATION",
+          "name": "Dortmund Hbf",
+          "arrival": "2016-12-25T12:21:00",
+          "departure": "2016-12-25T12:25:00",
+          "stationId": "8000080",
+          "coordinates": {
+            "latitude": 51.517899,
+            "longitude": 7.459294
+          }
+        },
+        {
+          "type": "STATION",
+          "name": "Münster(Westf)Hbf",
+          "arrival": "2016-12-25T12:54:00",
+          "departure": "2016-12-25T12:57:00",
+          "stationId": "8000263",
+          "coordinates": {
+            "latitude": 51.956563,
+            "longitude": 7.635716
+          }
+        },
+        {
+          "type": "STATION",
+          "name": "Osnabrück Hbf",
+          "arrival": "2016-12-25T13:21:00",
+          "departure": "2016-12-25T13:23:00",
+          "stationId": "8000294",
+          "coordinates": {
+            "latitude": 52.272849,
+            "longitude": 8.061778
+          }
+        },
+        {
+          "type": "STATION",
+          "name": "Bremen Hbf",
+          "arrival": "2016-12-25T14:14:00",
+          "departure": "2016-12-25T14:17:00",
+          "stationId": "8000050",
+          "coordinates": {
+            "latitude": 53.083478,
+            "longitude": 8.813833
+          }
+        },
+        {
+          "type": "STATION",
+          "name": "Hamburg-Harburg",
+          "arrival": "2016-12-25T15:00:00",
+          "departure": "2016-12-25T15:02:00",
+          "stationId": "8000147",
+          "coordinates": {
+            "latitude": 53.45591,
+            "longitude": 9.991699
+          }
+        },
+        {
+          "type": "STATION",
+          "name": "Hamburg Hbf",
+          "arrival": "2016-12-25T15:11:00",
+          "departure": "2016-12-25T15:17:00",
+          "stationId": "8002549",
+          "coordinates": {
+            "latitude": 53.552733,
+            "longitude": 10.006909
+          }
+        },
+        {
+          "type": "STATION",
+          "name": "Schwerin Hbf",
+          "arrival": "2016-12-25T16:12:00",
+          "departure": "2016-12-25T16:14:00",
+          "stationId": "8010324",
+          "coordinates": {
+            "latitude": 53.634741,
+            "longitude": 11.407455
+          }
+        },
+        {
+          "type": "STATION",
+          "name": "Bützow",
+          "arrival": "2016-12-25T16:46:00",
+          "departure": "2016-12-25T16:48:00",
+          "stationId": "8010066",
+          "coordinates": {
+            "latitude": 53.837115,
+            "longitude": 11.99819
+          }
+        },
+        {
+          "type": "STATION",
+          "name": "Rostock Hbf",
+          "arrival": "2016-12-25T17:06:00",
+          "departure": "2016-12-25T17:17:00",
+          "stationId": "8010304",
+          "coordinates": {
+            "latitude": 54.078242,
+            "longitude": 12.131078
+          }
         }
-    ]
+      ],
+      "zugfinderUrl": "http://www.zugfinder.de/zuginfo.php?zugnr=IC_2216",
+      "mapUrl": "http://maps.googleapis.com/maps/api/staticmap?size=640x640&scale=2&maptype=terrain&path=enc:arstHcdij@{eh@``Zyau@pb_@m~g@`rBweCatm@}~KayuAsttAuma@yw|@{erAmi}Ci{qCuvgAu`eFc|Qa~Aq_OmppG{of@akrB_bn@q}X&sensor=false&language=de"
+    }
+  ],
+  "mapUrl": "http://maps.googleapis.com/maps/api/staticmap?size=640x640&scale=2&maptype=terrain&path=enc:arstHcdij@{eh@``Zyau@pb_@m~g@`rBweCatm@}~KayuAsttAuma@yw|@{erAmi}Ci{qCuvgAu`eFc|Qa~Aq_OmppG{of@akrB_bn@q}X&sensor=false&language=de"
 }
 ```
 

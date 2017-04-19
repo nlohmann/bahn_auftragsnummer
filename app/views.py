@@ -7,39 +7,40 @@
 
 from flask_restplus import Resource, fields
 from app import cache, api
-from app.reiseplan import reiseplan
+from app.reiseplan import Reiseplan
 
 ns = api.namespace('itineraries', description='Operations related to itineraries')
 
 m_location = api.model('Location', {
-    'x': fields.String(example='7097136', description='longitude'),
-    'y': fields.String(example='50732008', description='latitude'),
-    'evaId': fields.String(example='8000044', description='station id'),
-    'locType': fields.String(example='STATION', description='location type'),
-    'count': fields.String(example='0', description='location index'),
-    'name': fields.String(example='Bonn Hbf', description='location name'),
-    'icon': fields.String(example='ic', description='icon type of the current transport'),
-    'disabled': fields.String(example=''),
-    'dep': fields.String(example='10:46', description='departure time'),
-    'arr': fields.String(example='10:44', description='arrival time'),
-    'infocontent': fields.String(example="<div class='bold pointer' onclick='setActiveStation(0, 8000044,\"10:46\",\"no\")'>Bonn Hbf</div>IC  2216 ab 10:46, Gleis 2 ")
+    'coordinates': fields.Nested(
+        api.model('Coordinates', {
+            'latitude': fields.Float(min=-90, max=90, example=54.078242, required=True),
+            'longitude': fields.Float(min=-180, max=180, example=12.131078, required=True)
+        })
+    ),
+    'arrival': fields.DateTime(description='date and time of the arrival'),
+    'departure': fields.DateTime(description='date and time of the departure'),
+    'stationId': fields.String(example='8000044', description='station id'),
+    'type': fields.String(example='STATION', description='location type', required=True),
+    'name': fields.String(example='Bonn Hbf', description='location name', required=True)
 })
 
-m_section = api.model('Section', {
-    'type': fields.String(example='JOURNEY'),
+m_leg = api.model('Leg', {
+    'mapUrl': fields.Url(description='map with the leg\'s route', example='http://maps.googleapis.com/maps/api/staticmap?size=800x800&scale=2&maptype=terrain&path=enc:}{q_IufrpAov@br`@c{eEjdnR&sensor=false&language=de', required=True),
+    'type': fields.String(example='JOURNEY', required=True),
     'name': fields.String(example='IC  2216', description='train name'),
-    'icon': fields.String(example='ic', description='icon type of the current transportation'),
-    'trainId': fields.String(example='628083/400978/773460/177369/80'),
-    'productcode': fields.String(example='1'),
-    'locations': fields.List(fields.Nested(m_location), description='list of intermediate locations')
-
+    'transport': fields.String(example='ic', description='type of the current transportation', required=True),
+    'trainId': fields.String(example='628083/400978/773460/177369/80', description='internal id of the train'),
+    'productCode': fields.Integer(example=1),
+    'locations': fields.List(fields.Nested(m_location), description='list of intermediate locations', required=True),
+    'zugfinderUrl': fields.Url(example='http://www.zugfinder.de/zuginfo.php?zugnr=IC_2376', description='more information on the train')
 })
 
 m_itinerary = api.model('Itinerary', {
-    'name': fields.String(example='C0-0'),
-    'date': fields.String(example='25.12.2016', description='start date'),
-    'referenceNumner': fields.String('TYFMQE', description='reference number'),
-    'sections': fields.List(fields.Nested(m_section), description='legs of the travel')
+    'travelDate': fields.Date(description="start date", required=True),
+    'mapUrl': fields.Url(description='map with the complete route', example='http://maps.googleapis.com/maps/api/staticmap?size=800x800&scale=2&maptype=terrain&path=enc:}{q_IufrpAov@br`@c{eEjdnR??q_OmppG{of@akrB_bn@q}X&sensor=false&language=de', required=True),
+    'referenceNumber': fields.String(example='TYFMQE', description='reference number', minLength=6, pattern='^[A-F0-9]{6}$', required=True),
+    'legs': fields.List(fields.Nested(m_leg), description='legs of the travel', required=True)
 })
 
 @ns.route('/<auftragsnummer>')
@@ -49,9 +50,13 @@ class ReferenceNumber(Resource):
     @api.response(404, 'itinerary not found')
     @cache.cached(timeout=3600)
     def get(self, auftragsnummer):
-        """returns an itinerary"""
-        rp = reiseplan(auftragsnummer)
-        if rp:
-            return rp
+        """
+        returns an itinerary
+        
+        [terms of use](https://www.bahn.de/p/view/home/agb/nutzungsbedingungen.shtml)
+        """
+        rp = Reiseplan(auftragsnummer)
+        if rp.valid:
+            return dict(rp)
         else:
             api.abort(404, error='itinerary not found', referenceNumber=auftragsnummer)
