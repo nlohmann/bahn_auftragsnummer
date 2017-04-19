@@ -22,7 +22,8 @@ cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 api = Api(app, version='0.0.4', catch_all_404s=True, prefix='/api',
           title='Deutsche Bahn Reiseplan', description=u'API for the itineraries of the Deutsche Bahn',
           terms_url='https://www.bahn.de/p/view/home/agb/nutzungsbedingungen.shtml',
-          contact='Niels Lohmann', contact_email='mail@nlohmann.me', contact_url='http://nlohmann.me')
+          contact='Niels Lohmann', contact_email='mail@nlohmann.me',
+          contact_url='https://github.com/nlohmann/bahn_auftragsnummer')
 
 # load views
 from app import views
