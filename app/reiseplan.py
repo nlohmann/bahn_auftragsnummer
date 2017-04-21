@@ -42,8 +42,12 @@ class Reiseplan(object):
 
             # search for the JSON payload
             if line.startswith('jsonObjC0_0'):
+                # extract JSON variable
+                json_text = line[line.find('=') + 1:line.rfind(';')]
+                # fix JSON variable (wrong escapes)
+                json_text = json_text.replace(r"\'", r'\"')
                 # parse the JSON variable
-                self.payload = json.loads(line[line.find('=') + 1:line.rfind(';')])
+                self.payload = json.loads(json_text)
                 break
 
     @property
@@ -85,13 +89,13 @@ class Reiseplan(object):
                 try:
                     hour, minute = location['arr'].split(':')
                     arrival = datetime.datetime.combine(self.travel_date, datetime.time(int(hour), int(minute)))
-                except ValueError:
+                except (ValueError, KeyError):
                     arrival = None
 
                 try:
                     hour, minute = location['dep'].split(':')
                     departure = datetime.datetime.combine(self.travel_date, datetime.time(int(hour), int(minute)))
-                except ValueError:
+                except (ValueError, KeyError):
                     departure = None
 
                 location_entry = {
