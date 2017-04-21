@@ -8,7 +8,7 @@ Dieses Projekt implementiert einen kleinen JSON-Wrapper um die Abfrage der Ticke
 ```
 virtualenv venv
 source venv/bin/activate
-pip install -r requirements
+pip install -r requirements.txt
 ```
 
 
