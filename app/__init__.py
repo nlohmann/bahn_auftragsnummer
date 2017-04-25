@@ -19,7 +19,7 @@ Compress(app)
 cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 
 # create a Flask-RESTPlus API
-api = Api(app, version='0.0.5', catch_all_404s=True, prefix='/api',
+api = Api(app, version='0.0.6', catch_all_404s=True, prefix='/api', validate=True,
           title='Deutsche Bahn Reiseplan', description=u'API for the itineraries of the Deutsche Bahn',
           terms_url='https://www.bahn.de/p/view/home/agb/nutzungsbedingungen.shtml',
           contact='Niels Lohmann', contact_email='mail@nlohmann.me',

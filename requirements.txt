@@ -1,10 +1,12 @@
 aniso8601==1.2.0
 appdirs==1.4.3
+beautifulsoup4==4.5.3
 click==6.7
 Flask==0.12.1
 Flask-Cache==0.13.1
 Flask-Compress==1.4.0
 flask-restplus==0.10.1
+functools32==3.2.3.post2
 gunicorn==19.7.1
 itsdangerous==0.24
 Jinja2==2.9.6
