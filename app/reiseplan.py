@@ -4,11 +4,11 @@ import json
 import requests
 import datetime
 import polyline
+import urllib
 
 
 class Reiseplan(object):
     def __init__(self, auftragsnummer):
-
         self.auftragsnummer = auftragsnummer
         self.travel_date = None
         self.payload = None
@@ -54,8 +54,17 @@ class Reiseplan(object):
     def valid(self):
         return self.payload is not None
 
-    def map_url(self, coordinates):
-        return 'http://maps.googleapis.com/maps/api/staticmap?size=640x640&scale=2&maptype=terrain&path=enc:{polyline}&sensor=false&language=de'.format(polyline=polyline.encode(coordinates))
+    @staticmethod
+    def map_url(coordinates):
+        params = {
+            'size': '640x640',
+            'scale': '2',
+            'maptype': 'terrain',
+            'path': 'enc:{polyline}'.format(polyline=polyline.encode(coordinates)),
+            'sensor': 'false',
+            'language': 'de'
+        }
+        return 'http://maps.googleapis.com/maps/api/staticmap?' + urllib.urlencode(params)
 
     def __iter__(self):
         legs = []
