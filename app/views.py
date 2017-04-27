@@ -76,5 +76,4 @@ class Form(Resource):
         case = Case()
         case.fill(api.payload)
         filled_form = case.create_pdf()
-        return send_from_directory(dirname(filled_form), basename(filled_form),
-                                   as_attachment=True, attachment_filename='Fahrgastrechte.pdf')
+        return send_from_directory(dirname(filled_form), basename(filled_form))

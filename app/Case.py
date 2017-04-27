@@ -250,8 +250,9 @@ class Case(object):
 
         pdftk_cmd = "pdftk {form_template} fill_form {fdf_file} output {form_output}".format(
             fdf_file=fdf_file.name, form_template=form_template, form_output=pdf_file.name)
-        os.system(pdftk_cmd)
-        print pdf_file.name
+        ret = os.system(pdftk_cmd)
+        if ret != 0:
+            raise SystemError
         os.remove(fdf_file.name)
 
         return pdf_file.name
