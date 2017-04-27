@@ -1,5 +1,10 @@
 # coding=utf-8
 
+########################################################################
+# Licensed under the MIT License <http://opensource.org/licenses/MIT>. #
+# Copyright (c) 2017 Niels Lohmann <http://nlohmann.me>.               #
+########################################################################
+
 import requests
 from bs4 import BeautifulSoup
 import datetime
@@ -49,7 +54,8 @@ class Buchung(object):
         page = requests.post(url, params=params, data=payload)
         soup = BeautifulSoup(page.content, 'html.parser')
 
-        headers = soup.find_all('table', {'class': 'form brsDetailsTable brsDetailsKopfzeileTable bottommargin-big spanall'})
+        headers = soup.find_all('table',
+                                {'class': 'form brsDetailsTable brsDetailsKopfzeileTable bottommargin-big spanall'})
         try:
             header_entries = headers[0].find_all('td')
         except IndexError:

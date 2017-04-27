@@ -1,5 +1,10 @@
 # coding=utf-8
 
+########################################################################
+# Licensed under the MIT License <http://opensource.org/licenses/MIT>. #
+# Copyright (c) 2017 Niels Lohmann <http://nlohmann.me>.               #
+########################################################################
+
 import json
 import requests
 import datetime
