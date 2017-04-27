@@ -248,7 +248,7 @@ class Case(object):
         basedir = os.path.dirname(os.path.realpath(__file__))
         form_template = os.path.abspath(os.path.join(basedir, 'static', 'fgr.pdf'))
 
-        pdftk_cmd = "/usr/local/bin/pdftk {form_template} fill_form {fdf_file} output {form_output}".format(
+        pdftk_cmd = "/usr/bin/pdftk {form_template} fill_form {fdf_file} output {form_output}".format(
             fdf_file=fdf_file.name, form_template=form_template, form_output=pdf_file.name)
         os.system(pdftk_cmd)
         print pdf_file.name
