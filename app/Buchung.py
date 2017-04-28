@@ -8,28 +8,29 @@
 import requests
 from bs4 import BeautifulSoup
 import datetime
+from typing import List
 
 
 class Buchungseintrag(object):
     def __init__(self):
-        self.type = None
-        self.travel_date = None
-        self.description = None
-        self.voucher_number = None
-        self.price = None
+        self.type = None            # type: str
+        self.travel_date = None     # type: datetime.date
+        self.description = None     # type: str
+        self.voucher_number = None  # type: str
+        self.price = None           # type: float
 
 
 class Buchung(object):
     def __init__(self, auftragsnummer, nachname):
-        self.auftragsnummer = auftragsnummer
-        self.nachname = nachname
+        self.auftragsnummer = auftragsnummer  # type: str
+        self.nachname = nachname              # type: str
 
-        self.reference_number = None
-        self.booking_date = None
-        self.booker = None
-        self.traveler = None
-        self.state = None
-        self.entries = []
+        self.reference_number = None          # type: str
+        self.booking_date = None              # type: datetime.date
+        self.booker = None                    # type: str
+        self.traveler = None                  # type: str
+        self.state = None                     # type: str
+        self.entries = []                     # type: List[Buchungseintrag]
 
         self.__download()
 

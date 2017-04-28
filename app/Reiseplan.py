@@ -10,13 +10,14 @@ import requests
 import datetime
 import polyline
 import urllib
+from typing import List, Dict, Any
 
 
 class Reiseplan(object):
     def __init__(self, auftragsnummer):
-        self.auftragsnummer = auftragsnummer
-        self.travel_date = None
-        self.payload = None
+        self.auftragsnummer = auftragsnummer  # type: str
+        self.travel_date = None               # type: datetime.date
+        self.payload = None                   # type: Dict[str, Any]
 
         self.__download(auftragsnummer)
 

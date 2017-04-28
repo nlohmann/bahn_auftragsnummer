@@ -8,10 +8,10 @@
 from flask import send_from_directory
 from flask_restplus import Resource
 from app import cache, api
-from app.buchung import Buchung
+from app.Buchung import Buchung
 from app.models import m_itinerary, m_bookingrequest, m_booking, m_form_request
-from app.reiseplan import Reiseplan
-from app.Case import Case
+from app.Reiseplan import Reiseplan
+from app.Complaint import Complaint
 from os.path import basename, dirname
 
 ########################################################################
@@ -73,7 +73,7 @@ class Form(Resource):
         """
         returns a filled form
         """
-        case = Case()
-        case.fill(api.payload)
-        filled_form = case.create_pdf()
+        complaint = Complaint()
+        complaint.fill(api.payload)
+        filled_form = complaint.create_pdf()
         return send_from_directory(dirname(filled_form), basename(filled_form))

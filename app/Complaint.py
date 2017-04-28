@@ -10,49 +10,51 @@ import os
 import tempfile
 import aniso8601
 import pytz
+import datetime
+from typing import Optional
 
 
-class Case(object):
+class Complaint(object):
     def __init__(self):
-        self.datum_reise = None
-        self.startbahnhof = None
-        self.startbahnhof_abfahrt_soll = None
-        self.datum_ankunft = None
-        self.zielbahnhof = None
-        self.zielbahnhof_ankunft_soll = None
-        self.zielbahnhof_ankunft_ist = None
-        self.zug_ankunft = None
-        self.zug_verspaetet = None
-        self.zug_verspaetet_abfahrt_ist = None
-        self.bahnhof_anschlusszug_verpasst = None
-        self.bahnhof_letzter_umstieg = None
-        self.bahnhof_reise_abgebrochen = None
-        self.bahnhof_reise_unterbrochen = None
+        self.datum_reise = None                    # type: Optional[datetime.date]
+        self.startbahnhof = None                   # type: Optional[str]
+        self.startbahnhof_abfahrt_soll = None      # type: Optional[datetime.datetime]
+        self.datum_ankunft = None                  # type: Optional[datetime.date]
+        self.zielbahnhof = None                    # type: Optional[str]
+        self.zielbahnhof_ankunft_soll = None       # type: Optional[datetime.datetime]
+        self.zielbahnhof_ankunft_ist = None        # type: Optional[datetime.datetime]
+        self.zug_ankunft = None                    # type: Optional[str]
+        self.zug_verspaetet = None                 # type: Optional[str]
+        self.zug_verspaetet_abfahrt_ist = None     # type: Optional[datetime.datetime]
+        self.bahnhof_anschlusszug_verpasst = None  # type: Optional[str]
+        self.bahnhof_letzter_umstieg = None        # type: Optional[str]
+        self.bahnhof_reise_abgebrochen = None      # type: Optional[str]
+        self.bahnhof_reise_unterbrochen = None     # type: Optional[str]
 
-        self.geschlecht = None
-        self.titel = None
-        self.firma = None
-        self.vorname = None
-        self.nachname = None
-        self.co = None
-        self.telefonnumer = None
-        self.strasse = None
-        self.hausnummer = None
-        self.staat = None
-        self.postleitzahl = None
-        self.wohnort = None
+        self.geschlecht = None                     # type: Optional[str]
+        self.titel = None                          # type: Optional[str]
+        self.firma = None                          # type: Optional[str]
+        self.vorname = None                        # type: Optional[str]
+        self.nachname = None                       # type: Optional[str]
+        self.co = None                             # type: Optional[str]
+        self.telefonnumer = None                   # type: Optional[str]
+        self.strasse = None                        # type: Optional[str]
+        self.hausnummer = None                     # type: Optional[str]
+        self.staat = None                          # type: Optional[str]
+        self.postleitzahl = None                   # type: Optional[str]
+        self.wohnort = None                        # type: Optional[str]
 
-        self.bahncard_100_nummer = None
-        self.zeitkarten_nummer = None
-        self.geburtsdatum = None
+        self.bahncard_100_nummer = None            # type: Optional[str]
+        self.zeitkarten_nummer = None              # type: Optional[str]
+        self.geburtsdatum = None                   # type: Optional[datetime.date]
 
-        self.email = None
-        self.marktforschung = False
+        self.email = None                          # type: Optional[str]
+        self.marktforschung = False                # type: bool
 
-        self.entschaedigung_ueberweisung = True
-        self.kontoinhaber = None
-        self.iban = None
-        self.bic = None
+        self.entschaedigung_ueberweisung = True    # type: bool
+        self.kontoinhaber = None                   # type: Optional[str]
+        self.iban = None                           # type: Optional[str]
+        self.bic = None                            # type: Optional[str]
 
     def fill(self, payload):
         def get_date(date_string):

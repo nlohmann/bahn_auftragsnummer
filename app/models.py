@@ -42,13 +42,13 @@ m_itinerary = api.model('Itinerary', {
                          example='http://maps.googleapis.com/maps/api/staticmap?size=800x800&scale=2&maptype=terrain&path=enc:}{q_IufrpAov@br`@c{eEjdnR??q_OmppG{of@akrB_bn@q}X&sensor=false&language=de',
                          required=True),
     'referenceNumber': fields.String(description='reference number', example='TYFMQE', minLength=6,
-                                     pattern='^[A-Z0-9]{6}$', required=True),
+                                     pattern='^[A-HK-Z1-46-9]{6}$', required=True),
     'legs': fields.List(fields.Nested(m_leg), description='legs of the travel', required=True)
 })
 
 m_bookingrequest = api.model('BookingRequest', {
     'referenceNumber': fields.String(description='reference number of the booking ("Auftragsnummer")', example='TYFMQE',
-                                     minLength=6, pattern='^[a-zA-Z0-9]{6}$', required=True),
+                                     minLength=6, pattern='^[A-HK-Z1-46-9]{6}$', required=True),
     'lastName': fields.String(description='the last name of the booker', example='Mustermann', required=True)
 })
 
@@ -65,7 +65,7 @@ m_booking_entry = api.model('BookingEntry', {
 
 m_booking = api.model('Booking', {
     'referenceNumber': fields.String(description='reference number', example='TYFMQE', attribute='reference_number',
-                                     required=True),
+                                     pattern='^[A-HK-Z1-46-9]{6}$', required=True),
     'bookingDate': fields.Date(description='booking date', example='2017-04-20', attribute='booking_date',
                                required=True),
     'booker': fields.String(description='name of the booker', example='Mustermann', required=True),
