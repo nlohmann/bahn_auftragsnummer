@@ -107,7 +107,7 @@ class Complaint(object):
         self.zeitkarten_nummer = payload.get('numberSeasonTicket')
         self.geburtsdatum = get_date(payload.get('dateOfBirth'))
         self.email = payload.get('email')
-        if payload.get('marketingResearch'):
+        if payload.get('marketingResearch') is not None:
             self.marktforschung = payload.get('marketingResearch')
         if payload.get('compensation'):
             self.entschaedigung_ueberweisung = payload.get('compensation') == 'transfer'
