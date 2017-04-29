@@ -1,6 +1,6 @@
 # Abfrage von Reisedaten der Deutschen Bahn aus der Auftragsnummer
 
-[![Build Status](https://travis-ci.org/nlohmann/bahn_auftragsnummer.svg?branch=master)](https://travis-ci.org/nlohmann/bahn_auftragsnummer)
+[![Build Status](https://travis-ci.org/nlohmann/bahn_auftragsnummer.svg?branch=master)](https://travis-ci.org/nlohmann/bahn_auftragsnummer) [![Coverage Status](https://coveralls.io/repos/github/nlohmann/bahn_auftragsnummer/badge.svg?branch=master)](https://coveralls.io/github/nlohmann/bahn_auftragsnummer?branch=master)
 
 Dieses Projekt implementiert einen kleinen JSON-Wrapper um die Abfrage der Ticketdaten auf <https://www.bahn.de/p/view/index.shtml>.
 
