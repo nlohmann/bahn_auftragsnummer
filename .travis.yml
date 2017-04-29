@@ -1,0 +1,17 @@
+language: python
+
+python:
+  - "2.7"
+
+cache: pip
+
+addons:
+  apt:
+    packages:
+    - pdftk
+
+install:
+  - pip install -r requirements.txt
+
+script:
+  - python -m unittest discover -s app/tests
