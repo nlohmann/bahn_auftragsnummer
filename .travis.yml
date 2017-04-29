@@ -12,6 +12,12 @@ addons:
 
 install:
   - pip install -r requirements.txt
+  - pip install coverage 
+  - pip install coveralls
 
 script:
   - python -m unittest discover -s app/tests
+  - coverage -m unittest discover -s app/tests
+
+after_success:
+    coveralls
