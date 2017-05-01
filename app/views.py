@@ -30,8 +30,8 @@ ns_form = api.namespace('forms', description='Operations related to Fahrgastrech
 @ns_itineraries.route('/<auftragsnummer>')
 @api.doc(params={'auftragsnummer': 'a 6-character reference number'})
 class ReferenceNumber(Resource):
-    @api.response(200, 'success', m_itinerary)
     @api.response(404, 'itinerary not found')
+    @ns_itineraries.marshal_with(m_itinerary)
     @cache.cached(timeout=3600)
     def get(self, auftragsnummer):
         """
@@ -39,10 +39,9 @@ class ReferenceNumber(Resource):
         
         [terms of use](https://www.bahn.de/p/view/home/agb/nutzungsbedingungen.shtml)
         """
-        rp = Reiseplan(auftragsnummer)
-        if rp.valid:
-            return dict(rp)
-        else:
+        try:
+            return Reiseplan(auftragsnummer)
+        except ValueError:
             api.abort(404, error='itinerary not found', referenceNumber=auftragsnummer)
 
 

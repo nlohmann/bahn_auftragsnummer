@@ -17,32 +17,34 @@ m_location = api.model('Location', {
     ),
     'arrival': fields.DateTime(description='date and time of the arrival', example='2017-01-06'),
     'departure': fields.DateTime(description='date and time of the departure', example='2017-01-06'),
-    'stationId': fields.String(description='station id', example='8000044'),
+    'stationId': fields.String(description='station id', example='8000044', attribute='station_id'),
     'type': fields.String(description='location type', example='STATION', required=True),
     'name': fields.String(description='location name', example='Bonn Hbf', required=True)
 })
 
 m_leg = api.model('Leg', {
-    'mapUrl': fields.Url(description='map with the leg\'s route',
-                         example='http://maps.googleapis.com/maps/api/staticmap?size=800x800&scale=2&maptype=terrain&path=enc:}{q_IufrpAov@br`@c{eEjdnR&sensor=false&language=de',
-                         required=True),
+    'mapUrl': fields.String(description='map with the leg\'s route',
+                            example='http://maps.googleapis.com/maps/api/staticmap?size=800x800&scale=2&maptype=terrain&path=enc:}{q_IufrpAov@br`@c{eEjdnR&sensor=false&language=de',
+                            required=True, attribute='map_url'),
     'type': fields.String(example='JOURNEY', required=True),
     'name': fields.String(description='train name', example='IC  2216'),
     'transport': fields.String(description='type of the current transportation', example='ic', required=True),
-    'trainId': fields.String(description='internal id of the train', example='628083/400978/773460/177369/80'),
-    'productCode': fields.Integer(example=1),
+    'trainId': fields.String(description='internal id of the train', example='628083/400978/773460/177369/80',
+                             attribute='train_id'),
+    'productCode': fields.Integer(example=1, attribute='product_code'),
     'locations': fields.List(fields.Nested(m_location), description='list of intermediate locations', required=True),
-    'zugfinderUrl': fields.Url(description='more information on the train',
-                               example='http://www.zugfinder.de/zuginfo.php?zugnr=IC_2376')
+    'zugfinderUrl': fields.String(description='more information on the train',
+                                  example='http://www.zugfinder.de/zuginfo.php?zugnr=IC_2376',
+                                  attribute='zugfinder_url')
 })
 
 m_itinerary = api.model('Itinerary', {
-    'travelDate': fields.Date(description="start date", example='2017-02-23', required=True),
-    'mapUrl': fields.Url(description='map with the complete route',
-                         example='http://maps.googleapis.com/maps/api/staticmap?size=800x800&scale=2&maptype=terrain&path=enc:}{q_IufrpAov@br`@c{eEjdnR??q_OmppG{of@akrB_bn@q}X&sensor=false&language=de',
-                         required=True),
+    'travelDate': fields.Date(description="start date", example='2017-02-23', required=True, attribute='travel_date'),
+    'mapUrl': fields.String(description='map with the complete route',
+                            example='http://maps.googleapis.com/maps/api/staticmap?size=800x800&scale=2&maptype=terrain&path=enc:}{q_IufrpAov@br`@c{eEjdnR??q_OmppG{of@akrB_bn@q}X&sensor=false&language=de',
+                            required=True, attribute='map_url'),
     'referenceNumber': fields.String(description='reference number', example='TYFMQE', minLength=6,
-                                     pattern='^[A-HK-Z1-46-9]{6}$', required=True),
+                                     pattern='^[A-HK-Z1-46-9]{6}$', required=True, attribute='auftragsnummer'),
     'legs': fields.List(fields.Nested(m_leg), description='legs of the travel', required=True)
 })
 
@@ -87,9 +89,11 @@ m_form_request = api.model('FormRequest', {
     'startStationActualArrival': fields.DateTime(description='actual arrival at end station',
                                                  example='2017-05-01T21:09:00'),
     'trainArrived': fields.String(description='last used train', example='ICE 554', pattern=r'^[A-Z]+ [0-9]+$'),
-    'trainFirstDelayed': fields.String(description='first delayed train', example='ICE 558', pattern=r'^[A-Z]+ [0-9]+$'),
-    'trainFirstDelayedPlannedDeparture': fields.DateTime(description='planned departure time of the first delayed train',
-                                                         example='2017-05-01T14:31:00'),
+    'trainFirstDelayed': fields.String(description='first delayed train', example='ICE 558',
+                                       pattern=r'^[A-Z]+ [0-9]+$'),
+    'trainFirstDelayedPlannedDeparture': fields.DateTime(
+        description='planned departure time of the first delayed train',
+        example='2017-05-01T14:31:00'),
     'stationMissedTrain': fields.String(description='station where a train was missed', example='Hannover Hbf'),
     'stationLastChange': fields.String(description='station where trains where last changed', example='Hannover Hbf'),
     'stationTripAborted': fields.String(description='station where the trip was aborted', example='Hannover Hbf'),

@@ -15,3 +15,8 @@ class TestReiseplan(TestCase):
         r = Reiseplan('TYFMQE')
         self.assertEqual(r.auftragsnummer, 'TYFMQE')
         self.assertEqual(r.travel_date, datetime.date(2016, 12, 25))
+        self.assertEqual(len(r.legs), 1)
+        self.assertEqual(r.legs[0].transport, 'ic')
+        self.assertEqual(r.legs[0].name, 'IC 2216')
+        self.assertEqual(r.legs[0].zugfinder_url, 'http://www.zugfinder.de/zuginfo.php?zugnr=IC_2216')
+        self.assertEqual(r.legs[0].type, 'JOURNEY')
