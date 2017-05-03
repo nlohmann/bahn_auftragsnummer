@@ -254,7 +254,7 @@ class Complaint(object):
             fdf_file=fdf_file.name, form_template=form_template, form_output=pdf_file.name)
         ret = os.system(pdftk_cmd)
         if ret != 0:
-            raise SystemError
+            raise SystemError  # pragma: no cover
         os.remove(fdf_file.name)
 
         return pdf_file.name

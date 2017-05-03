@@ -58,3 +58,25 @@ class TestComplaint(TestCase):
         c.fill(payload)
         f = c.create_pdf()
         self.assertTrue(os.path.isfile(f))
+
+    def test_empty_fill(self):
+        c = Complaint()
+        c.fill({})
+        f = c.create_pdf()
+        self.assertTrue(os.path.isfile(f))
+
+    def test_additional_cases(self):
+        c = Complaint()
+        c.fill({
+            "gender": "Frau",
+            "marketingResearch": True,
+            "compensation": "voucher"
+        })
+        f = c.create_pdf()
+        self.assertTrue(os.path.isfile(f))
+
+    def test_value_error(self):
+        c = Complaint()
+        c.geschlecht = "foobar"
+        with self.assertRaises(ValueError):
+            c.create_pdf()
