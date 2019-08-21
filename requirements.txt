@@ -21,4 +21,4 @@ pytz==2017.2
 requests==2.13.0
 six==1.10.0
 typing==3.6.1
-Werkzeug==0.12.1
+Werkzeug==0.15.3
