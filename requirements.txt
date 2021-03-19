@@ -10,7 +10,7 @@ flask-restplus==0.10.1
 functools32==3.2.3.post2
 gunicorn==19.7.1
 itsdangerous==0.24
-Jinja2==2.9.6
+Jinja2==2.11.3
 jsonschema==2.6.0
 MarkupSafe==1.0
 packaging==16.8
